@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 /* ---- COLOR & FONT VARIABLES ---- */
 :root {
     --primary-dark-gray: #494949;
@@ -70,4 +73,99 @@ body {
     font-size: 1.5rem;
     color: var(--primary-purple);
     margin-top: 0;
+}
+/* ---- FOOTER STYLES ---- */
+footer {
+    background-color: var(--primary-dark-gray);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+/* ---- GENERIC PAGE STYLES ---- */
+.page-header {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+.page-header h1 {
+    margin: 0;
+    font-size: 3rem;
+}
+.page-content {
+    max-width: 800px;
+    margin: 2rem auto; /* Centers the content block */
+    padding: 0 2rem;
+}
+/* ---- CONTACT SECTION STYLES ---- */
+#contact {
+    background-color: var(--white);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.contact-info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0.5rem 0;
+}
+/* ---- NAVIGATION BAR STYLES ---- */
+header {
+    background-color: var(--white);
+    padding: 0.5rem 2rem; /* Adds some space inside the bar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+    position: sticky; /* Makes the bar stick to the top as you scroll */
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    display: flex; /* This is the key to the layout */
+    justify-content: space-between; /* Pushes logo left and links right */
+    align-items: center; /* Vertically aligns them in the middle */
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the nav content on large screens */
+}
+
+.nav-logo img {
+    height: 50px; /* Adjust this value to make your logo bigger or smaller */
+}
+
+nav ul {
+    list-style: none; /* Removes the bullet points */
+    display: flex; /* Makes the links sit side-by-side */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 1.5rem; /* Adds space between the links */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-dark-gray);
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-purple);
 }
