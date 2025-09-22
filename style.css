@@ -8,14 +8,23 @@ html {
     --primary-purple: #827397;
     --neutral-light-bg: #F4F4F9;
     --white: #ffffff;
+    --font-heading: 'Merriweather', serif; /* ADD THIS */
+    --font-body: 'Lato', sans-serif;       /* ADD THIS */
 }
 
 /* ---- BASIC PAGE RESETS & STYLES ---- */
+/* ---- BASIC PAGE RESETS & STYLES ---- */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: var(--font-body); /* CHANGE THIS */
     background-color: var(--neutral-light-bg);
     color: var(--primary-dark-gray);
+    overflow-x: hidden;
+}
+
+/* ADD THIS NEW RULE FOR HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
 }
 
 /* ---- NAVIGATION BAR STYLES ---- */
@@ -131,6 +140,9 @@ nav ul li a:hover {
     z-index: 3;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     color: var(--white); /* Added this to make sure the text is white */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-content h1 {
@@ -144,6 +156,7 @@ nav ul li a:hover {
 }
 
 .cta-button {
+    display: inline-block; /* <-- ADD THIS LINE */
     background-color: var(--primary-purple);
     color: var(--white);
     padding: 1rem 2rem;
@@ -241,6 +254,27 @@ nav ul li a:hover {
     margin: 2rem auto;
     padding: 0 2rem;
 }
+/* ---- ABOUT US TWO-COLUMN LAYOUT ---- */
+.about-container {
+    display: flex; /* Activates Flexbox */
+    align-items: center; /* Vertically aligns the text and image */
+    gap: 3rem; /* Creates space between the text and image */
+}
+
+.about-text {
+    flex: 1.5; /* Gives the text column more space */
+    text-align: left;
+}
+
+.about-image {
+    flex: 1; /* Gives the image column less space */
+}
+
+.about-image img {
+    width: 100%; /* Makes the image fill its column */
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
 
 /* ---- FOOTER STYLES ---- */
 footer {
@@ -310,3 +344,77 @@ footer {
     font-size: 0.9rem;
     line-height: 1.5;
 }
+/* ---- MOBILE & TABLET STYLES ---- */
+@media (max-width: 768px) {
+
+    /* -- General Layout -- */
+    body {
+        /* This helps prevent minor overflow bugs */
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* -- Navigation -- */
+    header {
+        padding: 1rem; /* Adjust padding for mobile */
+    }
+
+    nav {
+        flex-direction: column; /* Stack logo and links vertically */
+        gap: 1rem; /* Add space between logo and links */
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* Allow links to wrap if needed */
+        justify-content: center; /* Center the links */
+        gap: 0.5rem;
+    }
+
+    nav ul li {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    
+    /* -- Hero Slideshow -- */
+    /* Hide the two side images on each slide */
+    .hero-slide img:nth-child(1),
+    .hero-slide img:nth-child(3) {
+        display: none;
+    }
+
+    /* Make the middle image take up the entire screen */
+    .hero-slide img:nth-child(2) {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        transform: scale(1);
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* -- Page Sections -- */
+    #about, #involved, #contact, #welcome {
+        padding: 3rem 1.5rem; /* Adjust padding for all sections */
+    }
+
+    /* -- Leadership Scroll -- */
+    .leader-scroll-container {
+        /* Ensures the scroll container itself doesn't cause overflow */
+        max-width: 100%;
+    }
+
+    /* -- Contact Map -- */
+    #contact iframe {
+        width: 100%; 
+        height: 300px;
+    }
+
+    /* This rule is now in the correct place */
+    .about-container {
+        flex-direction: column; 
+    }
+} /* <--- THIS IS THE END of the media query */
