@@ -1,0 +1,178 @@
+/* ---- CORE STYLES APPLIED TO ALL PAGES ---- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---- COLOR & FONT VARIABLES ---- */
+:root {
+    --primary-dark-gray: #494949;
+    --primary-purple: #827397;
+    --neutral-light-bg: #F4F4F9;
+    --white: #ffffff;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+/* ---- BASIC PAGE RESETS & STYLES ---- */
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--neutral-light-bg);
+    color: var(--primary-dark-gray);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
+
+/* ---- NAVIGATION BAR STYLES ---- */
+header {
+    background-color: var(--white);
+    padding: 0.5rem 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-dark-gray);
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-purple);
+}
+
+/* ---- GENERIC PAGE STYLES (for youth.html, etc.) ---- */
+.page-header {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+.page-header h1 {
+    margin: 0;
+    font-size: 3rem;
+}
+.page-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* ---- FOOTER STYLES ---- */
+footer {
+    background-color: var(--primary-dark-gray);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---- CALENDAR & GIVE PAGE STYLES ---- */
+.calendar-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 75%;
+    margin-top: 2rem;
+}
+
+.calendar-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.give-container {
+    text-align: center;
+}
+
+.donation-options {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+.donation-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    flex-basis: 400px;
+}
+
+.donation-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-purple);
+}
+
+.donation-card p {
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-purple);
+    color: var(--white);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #6a5b7d;
+}
