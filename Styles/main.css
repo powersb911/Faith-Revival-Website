@@ -176,3 +176,37 @@ footer {
 .cta-button:hover {
     background-color: #6a5b7d;
 }
+/* ---- PAST EVENTS GALLERY ---- */
+.past-events {
+    background-color: var(--white);
+    padding: 4rem 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    background-color: var(--neutral-light-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-item h3 {
+    margin-top: 0;
+    color: var(--primary-purple);
+    text-align: center;
+}
+
+.facebook-embed-placeholder {
+    background: #e9ebee;
+    border: 1px solid #dddfe2;
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+    color: #606770;
+}

@@ -188,6 +188,90 @@ footer {
         width: 100%;
         overflow-x: hidden;
     }
+    /* ---- MOBILE & TABLET STYLES ---- */
+@media (max-width: 768px) {
+
+    /* -- General Layout -- */
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* -- Add this new rule for scroll-to-anchor offset -- */
+    #about, #leadership, #involved, #promo, #contact {
+        scroll-margin-top: 120px; /* Adjust this value if needed */
+    }
+
+    /* -- Navigation -- */
+    header {
+        padding: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    nav ul li {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    
+    /* -- Hero Slideshow -- */
+    .hero-slide img:nth-child(1),
+    .hero-slide img:nth-child(3) {
+        display: none;
+    }
+
+    .hero-slide img:nth-child(2) {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        transform: scale(1);
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* -- Page Sections -- */
+    #about, #involved, #contact {
+        padding: 3rem 1.5rem;
+    }
+    
+    .about-container,
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* -- Leadership Scroll -- */
+    .leader-scroll-container {
+        max-width: 100%;
+    }
+
+    /* -- Contact Map -- */
+    #contact iframe {
+        width: 100%; 
+        height: 300px;
+    }
+    
+    /* -- Give Page -- */
+    .donation-options {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
 
     /* -- Navigation -- */
     header {
