@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Revival Center - Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #2d2d3d;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #5a4d7d;
+            font-weight: 300;
+        }
+
+        /* Logo Background */
+        .logo-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .logo-background img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            object-fit: contain;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .gallery-wrapper {
+            perspective: 1000px;
+            position: relative;
+            margin-bottom: 200px;
+            z-index: 5;
+        }
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .gallery-item {
+            position: absolute;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            filter: brightness(1.15);
+            box-shadow: 0 0 30px rgba(155, 142, 196, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(135deg, #4a4a5f, #3a3a4a);
+        }
+
+        /* Frame effect wrapper */
+        .frame-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            border: 2px solid rgba(155, 142, 196, 0.3);
+        }
+
+        .frame-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(155,142,196,0.1) 100%);
+            pointer-events: none;
+            z-index: 10;
+            border-radius: 12px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-info {
+            text-align: center;
+            color: #5a4d7d;
+            font-size: 0.95rem;
+            margin-top: 100px;
+            animation: fadeIn 1.2s ease-out 0.3s both;
+            position: relative;
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .logo-background img {
+                width: 350px;
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Logo Background -->
+    <div class="logo-background">
+        <img id="logoBackground" src="./images/frc-logo.jpg" alt="Faith Revival Center Logo" />
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Our Community</h1>
+            <p>Scroll to see our slice of Heaven</p>
+        </div>
+
+        <div class="gallery-wrapper">
+            <div class="gallery-container" id="galleryContainer">
+                <!-- Gallery items will be inserted here -->
+            </div>
+        </div>
+
+        <div class="scroll-info">
+            ↓ Scroll down to see more of the gallery ↓
+        </div>
+    </div>
+
+    <script>
+        // List of church images from your folder
+        const churchImages = [
+            './images/bp.png.jpg',
+            './images/dallas.jpg',
+            './images/fr-logo.jpg',
+            './images/free-food.jpg',
+            './images/il.lij.jpg',
+            './images/josh-baptism.jpg',
+            './images/kids.jpg',
+            './images/kids2.jpg',
+            './images/maci-lacy.jpg',
+            './images/outreach.jpg',
+            './images/pastors.jpg',
+            './images/wc.2025.jpg',
+            './images/wc2.jpg',
+            './images/wor-2.jpg',
+            './images/worship.jpg',
+            './images/you-belong.jpg',
+            './images/zadk.c-preach.jpg'
+        ];
+
+        // Size options with consistent aspect ratios - smaller range to help with spacing
+        const sizePresets = [
+            { width: 200, height: 260 },
+            { width: 220, height: 280 },
+            { width: 240, height: 300 },
+            { width: 200, height: 240 },
+            { width: 240, height: 240 },
+        ];
+
+        // Collision detection - check if a rectangle overlaps with any existing rectangles
+        function checkCollision(newRect, existingRects, padding = 20) {
+            for (let rect of existingRects) {
+                // Check if rectangles overlap (with padding as buffer zone)
+                if (!(newRect.right + padding < rect.left ||
+                      newRect.left - padding > rect.right ||
+                      newRect.bottom + padding < rect.top ||
+                      newRect.top - padding > rect.bottom)) {
+                    return true; // Collision detected
+                }
+            }
+            return false; // No collision
+        }
+
+        // Generate positions with collision detection
+        function generateGalleryPositions(numImages, containerWidth) {
+            const positions = [];
+            const placedRects = [];
+            const maxAttempts = 50; // Try up to 50 times to place each image
+            const padding = 25; // Minimum space between images
+            
+            // Approximate height based on estimated rows
+            const estimatedHeight = 5000;
+            
+            for (let i = 0; i < numImages; i++) {
+                const sizePreset = sizePresets[i % sizePresets.length];
+                let placed = false;
+                let attempts = 0;
+
+                while (!placed && attempts < maxAttempts) {
+                    // Random position within container
+                    const randomLeft = Math.random() * (containerWidth - sizePreset.width - 40) + 20;
+                    const randomTop = Math.random() * (estimatedHeight - sizePreset.height - 40) + 100;
+
+                    // Create rectangle for collision detection
+                    const newRect = {
+                        left: randomLeft,
+                        top: randomTop,
+                        right: randomLeft + sizePreset.width,
+                        bottom: randomTop + sizePreset.height
+                    };
+
+                    // Check if this position collides with any existing images
+                    if (!checkCollision(newRect, placedRects, padding)) {
+                        positions.push({
+                            left: randomLeft,
+                            top: randomTop,
+                            width: sizePreset.width,
+                            height: sizePreset.height,
+                            zIndex: i
+                        });
+                        placedRects.push(newRect);
+                        placed = true;
+                    }
+
+                    attempts++;
+                }
+
+                // If we couldn't place it after 50 attempts, place it anyway at the bottom
+                if (!placed) {
+                    const maxBottom = Math.max(...placedRects.map(r => r.bottom)) + 100;
+                    positions.push({
+                        left: Math.random() * (containerWidth - sizePreset.width - 40) + 20,
+                        top: maxBottom,
+                        width: sizePreset.width,
+                        height: sizePreset.height,
+                        zIndex: i
+                    });
+                }
+            }
+
+            return positions;
+        }
+
+        const galleryContainer = document.getElementById('galleryContainer');
+        const containerWidth = galleryContainer.parentElement.offsetWidth;
+        const numImagesToUse = Math.min(churchImages.length, 28);
+        const positions = generateGalleryPositions(numImagesToUse, containerWidth);
+
+        // Create gallery items
+        positions.forEach((pos, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.style.left = pos.left + 'px';
+            item.style.top = pos.top + 'px';
+            item.style.width = pos.width + 'px';
+            item.style.height = pos.height + 'px';
+            item.style.zIndex = pos.zIndex;
+
+            const imageUrl = churchImages[index % churchImages.length];
+
+            item.innerHTML = `
+                <div class="frame-wrapper">
+                    <img src="${imageUrl}" alt="Faith Revival Center moment ${index + 1}" />
+                </div>
+            `;
+            galleryContainer.appendChild(item);
+        });
+
+        // Set container height based on last item
+        const maxTop = Math.max(...positions.map(p => p.top + p.height));
+        galleryContainer.style.height = (maxTop + 300) + 'px';
+
+        // Parallax effect for background logo and gallery items
+        let scrollVelocity = 0;
+        let lastScrollY = 0;
+        let smoothedVelocity = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const rawVelocity = currentScrollY - lastScrollY;
+            lastScrollY = currentScrollY;
+
+            // Smooth out velocity
+            smoothedVelocity = smoothedVelocity * 0.7 + rawVelocity * 0.3;
+
+            // Parallax for background logo (slowest - barely moves)
+            const logoBackground = document.getElementById('logoBackground');
+            const logoOffset = currentScrollY * 0.05;
+            logoBackground.style.transform = `translate(-50%, calc(-50% + ${logoOffset}px))`;
+
+            // Parallax for gallery items with depth-based effect
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach((item, index) => {
+                // Subtle parallax based on index (depth layering)
+                const parallaxFactor = 0.01 + (index % 5) * 0.008;
+                const yOffset = smoothedVelocity * parallaxFactor;
+
+                // Very subtle stretch
+                const stretch = Math.max(0, smoothedVelocity) * 0.002;
+                
+                item.style.transform = `
+                    translateY(${yOffset}px)
+                    scaleY(${1 + stretch})
+                    scaleX(${1 - stretch * 0.1})
+                `;
+            });
+        });
+
+        // Smooth scrolling for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministries - Faith Revival Church</title>
+    <link rel="stylesheet" href="Styles/main.css">
+    <link rel="stylesheet" href="Styles/home.css">
+    <link rel="stylesheet" href="Styles/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---- MINISTRIES PAGE SPECIFIC STYLES ---- */
+
+        /* Section alternating backgrounds */
+        .ministry-section:nth-child(odd) {
+            background-color: var(--white);
+        }
+        .ministry-section:nth-child(even) {
+            background-color: var(--neutral-light-bg);
+        }
+
+        .ministry-section {
+            padding: 4rem 2rem;
+        }
+
+        /* Two-column layout for each ministry */
+        .ministry-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        /* Flip layout on alternating rows */
+        .ministry-section:nth-child(even) .ministry-inner {
+            flex-direction: row-reverse;
+        }
+
+        .ministry-text {
+            flex: 1;
+        }
+
+        .ministry-text .ministry-tag {
+            display: inline-block;
+            background-color: var(--primary-purple);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+
+        .ministry-text h2 {
+            margin: 0 0 0.25rem 0;
+            font-size: 2rem;
+            color: var(--primary-dark-gray);
+        }
+
+        .ministry-text .ministry-subtitle {
+            color: var(--primary-purple);
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 0 0 1rem 0;
+            font-family: var(--font-body);
+        }
+
+        .ministry-text p {
+            line-height: 1.8;
+            color: var(--primary-dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .ministry-contact {
+            margin-top: 1.25rem;
+            padding: 1rem 1.25rem;
+            background-color: var(--neutral-light-bg);
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 0 6px 6px 0;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+        }
+
+        .ministry-section:nth-child(even) .ministry-contact {
+            background-color: var(--white);
+        }
+
+        .ministry-contact strong {
+            color: var(--primary-purple);
+        }
+
+        /* Ministry image placeholder */
+        .ministry-image {
+            flex: 0 0 320px;
+            height: 240px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .ministry-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Image placeholder when no photo yet */
+        .ministry-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #e8e4ef;
+            color: var(--primary-purple);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .ministry-image-placeholder svg {
+            margin-bottom: 0.5rem;
+            opacity: 0.5;
+        }
+
+        /* ---- PARTNERS SECTION ---- */
+        #partners {
+            background-color: var(--primary-dark-gray);
+            padding: 5rem 2rem;
+            color: var(--white);
+        }
+
+        #partners h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        #partners .section-subheading {
+            text-align: center;
+            color: #c9c2d4;
+            font-family: var(--font-body);
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .partner-card {
+            background-color: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 1.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .partner-card:hover {
+            background-color: rgba(255,255,255,0.14);
+            transform: translateY(-3px);
+        }
+
+        .partner-card h3 {
+            color: var(--white);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* If a partner has a website link */
+        .partner-card h3 a {
+            color: #c9b8e8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .partner-card h3 a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .partner-card p {
+            color: #b0a8be;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .partner-tag {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #c9b8e8;
+            border: 1px solid #6a5b7d;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ---- PAGE INTRO ---- */
+        .page-intro {
+            max-width: 700px;
+            margin: 0 auto 0 auto;
+            text-align: center;
+            padding: 3rem 2rem 1rem;
+            background-color: var(--white);
+        }
+
+        .page-intro p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--primary-dark-gray);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .ministry-inner {
+                flex-direction: column !important;
+            }
+            .ministry-image {
+                flex: none;
+                width: 100%;
+                height: 200px;
+            }
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <img src="Images/frc-logo.jpg" alt="Faith Revival Church Logo">
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#involved">Get Involved</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="give.html">Give</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <h1>Our Ministries</h1>
+        </div>
+
+        <!-- PAGE INTRO -->
+        <div class="page-intro">
+            <p>At Faith Revival Church, we believe the Church is most alive when it is moving. From our youngest members to our elders, from our church family to our neighbors — every ministry here exists to love people well and make the name of Jesus known.</p>
+        </div>
+
+        <!-- ============================
+             MINISTRY 1: DAUGHTERS OF Revival
+             ============================ -->
+        <section class="ministry-section">
+            <div class="ministry-inner">
+                <div class="ministry-text">
+                    <span class="ministry-tag">Women's Ministry</span>
+                    <h2>Daughters of Revial</h2>
+                    <p class="ministry-subtitle">"Building women of purpose, prayer, and power."</p>
+                    <p>[Placeholder — describe what Daughters of Revival is all about. Who leads it? What do you do together? How often do you meet? What is the heart behind this ministry?]</p>
+                    <p>[Placeholder — add a second paragraph here with any upcoming events, conference info, or an invitation for women who want to get involved.]</p>
+                    <div class="ministry-contact">
+                        <strong>Contact:</strong> [Leader Name] &mdash; [email or phone placeholder]
+                    </div>
+                </div>
+                <div class="ministry-image">
+                    <!-- Replace with a real photo: <img src="images/daughters-of-faith.jpg" alt="Daughters of Faith" loading="lazy"> -->
+                    <div class="ministry-image-placeholder">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        Photo coming soon
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             MINISTRY 2: MOUNTAIN MOVERS
+             ============================ -->
+        <section class="ministry-section">
+            <div class="ministry-inner">
+                <div class="ministry-text">
+                    <span class="ministry-tag">Elders Ministry</span>
+                    <h2>Mountain Movers</h2>
+                    <p class="ministry-subtitle">"Faith that moves mountains — wisdom that builds them."</p>
+                    <p>[Placeholder — describe the Mountain Movers ministry. Who are the elders? What role do they play in the life of the church? What does this ministry do for the congregation and the community?]</p>
+                    <p>[Placeholder — add anything about how people can receive prayer, support, or wisdom from the elders, or how someone might become involved.]</p>
+                    <div class="ministry-contact">
+                        <strong>Contact:</strong> [Elder Name] &mdash; [email or phone placeholder]
+                    </div>
+                </div>
+                <div class="ministry-image">
+                    <div class="ministry-image-placeholder">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        Photo coming soon
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             MINISTRY 3: MEN'S MINISTRY
+             ============================ -->
+        <section class="ministry-section">
+            <div class="ministry-inner">
+                <div class="ministry-text">
+                    <span class="ministry-tag">Men's Ministry</span>
+                    <h2>Men's Ministry</h2>
+                    <p class="ministry-subtitle">"Fellowship, accountability, and Kingdom work."</p>
+                    <p>[Placeholder — describe the Men's Ministry. Each month the men of Faith Revival come together for fellowship and for Kingdom Work — using their time and skills to serve members of the church through manual labor and practical help. Expand on what this looks like.]</p>
+                    <p>[Placeholder — add a paragraph about the monthly fellowship gatherings. What happens? Who is it for? How can a man visiting the church get connected?]</p>
+                    <div class="ministry-contact">
+                        <strong>Contact:</strong> [Leader Name] &mdash; [email or phone placeholder]
+                    </div>
+                </div>
+                <div class="ministry-image">
+                    <div class="ministry-image-placeholder">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        Photo coming soon
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             MINISTRY 4: S.O.W. MINISTRY
+             ============================ -->
+        <section class="ministry-section">
+            <div class="ministry-inner">
+                <div class="ministry-text">
+                    <span class="ministry-tag">In-Home Outreach</span>
+                    <h2>S.O.W. Ministry</h2>
+                    <p class="ministry-subtitle">Son Shine on Wheels &mdash; "Bringing the light of Jesus to every door."</p>
+                    <p>[Placeholder — describe the S.O.W. Ministry. Who does it serve? How does it work? Who leads or coordinates the visits? What does a typical visit or service look like for someone who is homebound or cannot attend services in person?]</p>
+                    <p>[Placeholder — how can people request a visit, or how can volunteers get involved in this ministry?]</p>
+                    <div class="ministry-contact">
+                        <strong>Contact:</strong> [Leader Name] &mdash; [email or phone placeholder]
+                    </div>
+                </div>
+                <div class="ministry-image">
+                    <div class="ministry-image-placeholder">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        Photo coming soon
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             PARTNERS SECTION
+             ============================ -->
+        <section id="partners">
+            <h2>Our Partners</h2>
+            <p class="section-subheading">Iron sharpens iron. We are grateful for the churches and ministries we walk alongside.</p>
+
+            <div class="partners-grid">
+
+                <!-- Partner 1: Men's Meetings Ministry -->
+                <div class="partner-card">
+                    <span class="partner-tag">Men's Ministry</span>
+                    <h3>[Partner Ministry Name]</h3>
+                    <!-- If they have a website: <h3><a href="https://theirwebsite.com" target="_blank">[Partner Ministry Name]</a></h3> -->
+                    <p>[Placeholder — one of our members leads this ministry, hosting monthly men's meetings, a back-to-school bash, and tent meetings throughout the year. Brief description of what they do and how we partner with them.]</p>
+                </div>
+
+                <!-- Partner 2: Monthly Bible Study Church -->
+                <div class="partner-card">
+                    <span class="partner-tag">Bible Study</span>
+                    <h3>[Partner Church Name]</h3>
+                    <p>[Placeholder — we partner with this church for a monthly Bible study. Describe the heart of this partnership and what it means to the congregation.]</p>
+                </div>
+
+                <!-- Partner 3: Desserts for Outreach -->
+                <div class="partner-card">
+                    <span class="partner-tag">Community Outreach</span>
+                    <h3>[Partner Church Name]</h3>
+                    <p>[Placeholder — this church blesses our monthly outreach by providing desserts for the community meals we serve. A small act that makes a big difference.]</p>
+                </div>
+
+                <!-- Partner 4: Community Feeding Ministry -->
+                <div class="partner-card">
+                    <span class="partner-tag">Community Feeding</span>
+                    <h3>[Partner Ministry Name]</h3>
+                    <p>[Placeholder — this ministry shares our heart for feeding the community, and we are grateful to occasionally use their building for our outreach events. Describe the relationship and the impact.]</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Faith Revival Church. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/faithrevival2019">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
