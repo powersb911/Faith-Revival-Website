@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body id="home">
 
@@ -28,45 +28,55 @@
     </header>
 
     <main>
-        <!-- HERO SLIDESHOW SECTION -->
+        <!-- HERO VIDEO SECTION -->
         <section id="hero">
             <div class="hero-overlay"></div>
-            <div class="hero-slide active">
-                <img src="images/free-food.jpg" alt="Free Food Photo">
-                <img src="images/josh-baptism.jpg" alt="Baptism in the Name of Jesus">
-                <img src="images/maci-lacy.jpg" alt="Children Praying">
-            </div>
-            <div class="hero-slide">
-                <img src="images/you-belong.jpg" alt="Women's conference photo">
-                <img src="images/wc.2025.jpg" alt="You belong outreach photo">
-                <img src="images/zack.c-preach.jpg" alt="Guest preacher photo">
-            </div>
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="images/churchoverview.mp4" type="video/mp4">
+            </video>
             <div class="hero-content">
+                <p class="hero-tagline">Faith Revival Church</p>
                 <h1>Welcome Home</h1>
-                <p>Faith Revival... Where everybody is somebody.</p>
+                <p class="hero-subtitle">Where everybody is somebody.</p>
                 <a href="#involved" class="cta-button">Get Involved</a>
             </div>
         </section>
 
-        <!-- CLEAN "ABOUT US" SECTION -->
-        <section id="about">
-            <div class="page-content">
-                <div class="about-container">
-                    <div class="about-text">
-                        <h2>Our Story & Beliefs</h2>
-                        <p>Faith Revival Church is a nondenominational church who believes in being the hands and feet of Jesus. (Expound upon this with pastor approval)</p>
-                        <p>We believe in the freedom to worship, the unity of the body of Christ, and that God's Spirit is alive and working miracles today...</p>
+        <!-- ABOUT US / WHO WE ARE SECTION -->
+        <section id="about" class="fade-section">
+            <div class="about-carousel-wrapper">
+                <div class="about-carousel" id="aboutCarousel">
+                    <!-- Placeholder slides — replace src with your actual images/videos -->
+                    <div class="carousel-slide active">
+                        <img src="images/kids2.jpg" alt="Church community moment">
                     </div>
-                    <div class="about-image">
-                        <img src="images/kids2.jpg" alt="A photo of the church congregation or building">
+                    <div class="carousel-slide">
+                        <img src="images/worship.jpg" alt="Worship service">
                     </div>
+                    <div class="carousel-slide">
+                        <img src="images/outreach.jpg" alt="Community outreach">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/free-food.jpg" alt="Serving the community">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/josh-baptism.jpg" alt="Baptism">
+                    </div>
+                    <!-- Add more slides here as you get more photos -->
                 </div>
+                <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous slide">&#10094;</button>
+                <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next slide">&#10095;</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+            <div class="about-text-block">
+                <h2>Who We Are</h2>
+                <p>Faith Revival Church is a nondenominational church who believes in being the hands and feet of Jesus. We believe in the freedom to worship, the unity of the body of Christ, and that God's Spirit is alive and working miracles today.</p>
             </div>
         </section>
 
-        <!-- CLEAN "LEADERSHIP TEAM" SECTION -->
-        <section id="leadership">
-            <div class="page-content">
+        <!-- LEADERSHIP TEAM SECTION -->
+        <section id="leadership" class="fade-section">
+            <div class="section-inner">
                 <h2>Our Leadership Team</h2>
                 <div class="leader-scroll-container">
                     <div class="leader-row">
@@ -74,7 +84,7 @@
                             <h3>Pastors</h3>
                             <img src="images/pastors.jpg" alt="Photo of the Pastor">
                             <h4>Anthony & Erica Miller</h4>
-                            <p>Anthony and Erica have been pastors at Faith Revival Church since 2023. They have a burden for the people of the chruch and their goal is to reach the lost. They have made tramendous strides towards spreading the reach of the church to help the community, homeless, forgetten, and constantly try to suppot other chruches. </p>
+                            <p>Anthony and Erica have been pastors at Faith Revival Church since 2023. They have a burden for the people of the church and their goal is to reach the lost. They have made tremendous strides towards spreading the reach of the church to help the community, homeless, forgotten, and constantly try to support other churches.</p>
                         </div>
                         <div class="leader-card">
                             <h3>Youth Minister Ages 2-5</h3>
@@ -99,26 +109,32 @@
             </div>
         </section>
 
-        <!-- GET INVOLVED SECTION -->
-        <section id="involved">
-            <h2>Get Involved</h2>
-            <div class="hub-grid">
-                <a href="events.html" class="hub-card">
-                    <h3>Upcoming Events</h3>
-                    <p>Check out the calendar for services, gatherings, and special events.</p>
-                </a>
-                <a href="ministries.html" class="hub-card">
-                    <h3>Ministries</h3>
-                    <p>Check out the ministries of Faith Revival Church.</p>
-                </a>
-                <a href="youth.html" class="hub-card">
-                    <h3>Youth Ministry</h3>
-                    <p>A fun and engaging space for students to grow in their faith and connect.</p>
-                </a>
-                <a href="outreach.html" class="hub-card">
-                    <h3>Monthly Outreach</h3>
-                    <p>Join us as we serve our local community and make a difference together.</p>
-                </a>
+        <!-- GET INVOLVED SECTION (Purple) -->
+        <section id="involved" class="purple-section fade-section">
+            <div class="section-inner">
+                <h2>Get Involved</h2>
+                <div class="hub-grid">
+                    <a href="events.html" class="hub-card">
+                        <div class="hub-card-icon">📅</div>
+                        <h3>Upcoming Events</h3>
+                        <p>Check out the calendar for services, gatherings, and special events.</p>
+                    </a>
+                    <a href="ministries.html" class="hub-card">
+                        <div class="hub-card-icon">🤝</div>
+                        <h3>Ministries</h3>
+                        <p>Check out the ministries of Faith Revival Church.</p>
+                    </a>
+                    <a href="youth.html" class="hub-card">
+                        <div class="hub-card-icon">⭐</div>
+                        <h3>Youth Ministry</h3>
+                        <p>A fun and engaging space for students to grow in their faith and connect.</p>
+                    </a>
+                    <a href="outreach.html" class="hub-card">
+                        <div class="hub-card-icon">❤️</div>
+                        <h3>Monthly Outreach</h3>
+                        <p>Join us as we serve our local community and make a difference together.</p>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -126,23 +142,25 @@
         <section id="promo" class="parallax-section">
             <h2>Join Us This Sunday</h2>
             <p>Experience powerful worship and a life-changing message.</p>
-            <a href="#contact" class="cta-button">Plan Your Visit</a>
+            <a href="#contact" class="cta-button cta-button-light">Plan Your Visit</a>
         </section>
 
-        <!-- CONTACT SECTION -->
-        <section id="contact">
-            <div class="contact-container">
-                <div class="contact-text">
-                    <h2>Contact Us</h2>
-                    <p><strong>Service Times:</strong> Saturday and Wednesday at 7:00 PM</p>
-                    <p><strong>Phone:</strong> (229) 507-6024</p>
-                    <p><strong>Email:</strong> contact@faithrevival.com</p>
-                    <a href="https://maps.app.goo.gl/vkj6NMNiVMnGSQeFA" target="_blank" class="contact-address">
-                        <p><strong>Address:</strong> 10 Faith Revival Lane, Hiddenite, NC</p>
-                    </a>
-                </div>
-                <div class="contact-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3227.72053019204!2d-81.0146846!3d36.00269459999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885168c8bf437db1%3A0xd0c5cbc44bb5039d!2sFaith%20Revival%20Church!5e0!3m2!1sen!2sus!4v1758555897569!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- CONTACT SECTION (Dark) -->
+        <section id="contact" class="dark-section fade-section">
+            <div class="section-inner">
+                <div class="contact-container">
+                    <div class="contact-text">
+                        <h2>Contact Us</h2>
+                        <p><strong>Service Times:</strong> Saturday and Wednesday at 7:00 PM</p>
+                        <p><strong>Phone:</strong> (229) 507-6024</p>
+                        <p><strong>Email:</strong> contact@faithrevival.com</p>
+                        <a href="https://maps.app.goo.gl/vkj6NMNiVMnGSQeFA" target="_blank" class="contact-address">
+                            <p><strong>Address:</strong> 10 Faith Revival Lane, Hiddenite, NC</p>
+                        </a>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3227.72053019204!2d-81.0146846!3d36.00269459999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885168c8bf437db1%3A0xd0c5cbc44bb5039d!2sFaith%20Revival%20Church!5e0!3m2!1sen!2sus!4v1758555897569!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </section>
@@ -158,6 +176,6 @@
     </footer>
 
     <script src="script.js"></script>
-    
+
 </body>
 </html>
