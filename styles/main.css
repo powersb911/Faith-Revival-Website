@@ -153,34 +153,18 @@ footer {
     margin: 0 auto;
 }
 
-.social-links a {
-    color: var(--white);
-    text-decoration: none;
-    margin: 0 0.5rem;
-    font-weight: bold;
-}
-
-.social-links a:hover {
-    text-decoration: underline;
-}
-
 /* ---- CALENDAR & GIVE PAGE STYLES ---- */
 .calendar-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 75%;
     margin-top: 2rem;
+    text-align: center;
 }
 
-.calendar-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+.calendar-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(130, 115, 151, 0.12),
+                0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
 .give-container {
@@ -273,72 +257,4 @@ footer {
 
 .cta-button:hover::before {
     left: 100%;
-}
-/* ---- PAST EVENTS GALLERY ---- */
-.past-events {
-    background-color: var(--white);
-    padding: 4rem 2rem;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.gallery-item {
-    background-color: var(--white);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 10px 35px rgba(130, 115, 151, 0.08),
-                0 4px 15px rgba(0, 0, 0, 0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(130, 115, 151, 0.08);
-    position: relative;
-    overflow: hidden;
-}
-
-.gallery-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(130, 115, 151, 0.05) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.gallery-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 45px rgba(130, 115, 151, 0.12),
-                0 8px 25px rgba(0, 0, 0, 0.08);
-}
-
-.gallery-item:hover::before {
-    opacity: 1;
-}
-
-.gallery-item h3 {
-    margin-top: 0;
-    color: var(--primary-purple);
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    font-weight: 700;
-}
-
-.facebook-embed-placeholder {
-    background: linear-gradient(135deg, #f5f3f9 0%, #eae7f0 100%);
-    border: 1.5px solid rgba(130, 115, 151, 0.15);
-    border-radius: 8px;
-    padding: 2.5rem;
-    text-align: center;
-    color: #827397;
-    position: relative;
-    z-index: 1;
 }

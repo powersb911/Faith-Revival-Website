@@ -119,9 +119,4 @@
         flex-direction: column;
         align-items: center;
     }
-
-    /* -- Gallery -- */
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
 }
